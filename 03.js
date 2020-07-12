@@ -32,21 +32,28 @@ function buildTree (arr) {
   toTree(Tree, arr);
 }
 
-function toTree (Tree, arr) {
-
-  arr.forEach(item => {
-    if (item.parentId) {
-      if (item.parentId === Tree.id) {
-        Tree.children.push(item)
-        // item.children = [] 
+function toTree (data, parent) {
+  var tree = [];
+  var temp;
+  data.map((item, index) => {
+    if (item.parentId == parent) {
+      temp = toTree(data, item.id);
+      if (temp.length > 0) {
+        item.children = temp;
+        let obj = {};
       } else {
-        Tree.children.push(item)
+        item.children = [];
       }
+      if (dataObjById[item.parentId]) {
+        let { id, name, parentId } = dataObjById[item.parentId]
+        item.parent = { id, name, parentId };
+      } else {
+        item.parent = {};
+      }
+      tree.push(item);
     }
-    // 思路  : 进行递归操作  每次判断有没有parentID  如果有  那么判断是否和 单上一级的 父元素相等  如果相等   push进去Children,否则 新建节点树
   })
-
-  console.log('Tree', Tree);
+  return tree;
 }
 
 buildTree(arr);
