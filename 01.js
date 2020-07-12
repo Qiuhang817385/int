@@ -4,6 +4,8 @@
 /**
  * @param {number[]} arr - 元素内容全部为自然数的数组
  * @return {number} - 返回数组中出现次数超过数组长度一半的自然数，如果没有则返回 -1 
+ * 
+ * 新增了一行
  */
 function findMoreThanHalf (arr) {
   // your code are here...
