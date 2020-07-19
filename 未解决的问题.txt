@@ -1,0 +1,26 @@
+https://www.cnblogs.com/dreamingbaobei/p/8476984.html
+理顺react，flux，redux这些概念的关系
+
+https://blog.csdn.net/THEONE10211024/article/details/77775489
+事件分发（EventDispatcher）模式
+
+https://www.npmjs.com/package/create-subscription
+
+
+
+https://react.docschina.org/blog/2018/03/27/update-on-async-rendering.html	
+异步渲染之更新
+
+https://reactjs.org/docs/legacy-context.html
+Legacy Context
+
+https://blog.csdn.net/margin_0px/article/details/81331159
+react中findDomNode的作用
+
+https://react.docschina.org/docs/strict-mode.html
+严格模式
+
+https://react.docschina.org/docs/hooks-effect.html
+使用 Effect Hook
+
+https://reacttraining.com/react-router/web/guides/quick-start

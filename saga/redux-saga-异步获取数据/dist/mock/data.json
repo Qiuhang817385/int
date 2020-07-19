@@ -1,0 +1,9 @@
+{
+    "status":"10001",
+    "msg":"success",
+    "data":[
+        {"id":"1001","name":"tom","age":19,"sex":"男"},
+        {"id":"1002","name":"jarry","age":21,"sex":"男"},
+        {"id":"1003","name":"susan","age":22,"sex":"女"}
+    ]
+}

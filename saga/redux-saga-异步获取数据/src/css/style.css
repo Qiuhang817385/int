@@ -1,0 +1,17 @@
+body,ul{
+    margin:0px;
+    padding:0px;
+    font-size: 16px;
+}
+
+#stus{
+    background-color: #090;
+    color: #fff;
+    width: 300px;
+    height: 200px;
+    float: left;
+
+}
+ul{
+    list-style: none;
+}
