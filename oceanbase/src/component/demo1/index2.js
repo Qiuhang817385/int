@@ -6,19 +6,19 @@ let id = 0;
 let fillComponentData = {
   key: Date.now(),
   name: <Comp2 />,
-  age: <Comp2 />,
-  del:<>{
-    // keys.length > 1 ? 
-    (
-    <Icon
-      className="dynamic-delete-button"
-      type="minus-circle-o"
-      // onClick={() => this.remove(k)}
-    />
-  ) 
-  // : null
-  }
-  </>
+  age: <div>123</div>,
+  // del: <>{
+  //   // keys.length > 1 ? 
+  //   (
+  //     <Icon
+  //       className="dynamic-delete-button"
+  //       type="minus-circle-o"
+  //       onClick={() => this.remove()}
+  //     />
+  //   )
+  //   // : null
+  // }
+  // </>
 }
 
 let dataSource = [
@@ -26,7 +26,12 @@ let dataSource = [
 ];
 
 class DynamicFieldSet extends React.Component {
-  remove = k => {
+  remove = ({ key }) => {
+    let index = dataSource.findIndex((item) => item.key === key);
+    dataSource = dataSource.filter(item => {
+      return item.key !== key
+    })
+    // 怎么找到索引值
     const { form } = this.props;
     // can use data-binding to get
     const keys = form.getFieldValue('keys');
@@ -37,11 +42,11 @@ class DynamicFieldSet extends React.Component {
 
     // can use data-binding to set
     form.setFieldsValue({
-      keys: keys.filter(key => key !== k),
+      keys: keys.filter(key => key !== index),
     });
   };
 
-  
+
 
   add = () => {
     const { form } = this.props;
@@ -51,16 +56,12 @@ class DynamicFieldSet extends React.Component {
 
     const nextKeys = keys.concat(id++);
     dataSource.push(fillComponentData)
-
-    if (nextKeys.length > 5) {
-      message.info({
-        content: '条数超过5条了'
-      })
-      return
-    }
-
-    
-
+    // if (nextKeys.length > 5) {
+    //   message.info({
+    //     content: '条数超过5条了'
+    //   })
+    //   return
+    // }
     // can use data-binding to set
     // important! notify form to detect changes
     form.setFieldsValue({
@@ -100,13 +101,6 @@ class DynamicFieldSet extends React.Component {
     const keys = getFieldValue('keys');
     console.log('keys', keys);
 
-    const formItems = keys.map((k, index) => (
-      <>
-        {/* 表格的一列 */}
-        <div>1</div>
-      </>
-    ));
-
 
     const columns = [
       {
@@ -123,6 +117,14 @@ class DynamicFieldSet extends React.Component {
         title: '删除',
         dataIndex: 'del',
         key: 'del',
+        render: (text, record) => {
+          console.log(text, record)
+          return <Icon
+            className="dynamic-delete-button"
+            type="minus-circle-o"
+            onClick={() => this.remove(record)}
+          />
+        }
       },
     ];
     return (<>
